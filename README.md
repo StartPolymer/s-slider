@@ -1,6 +1,6 @@
 # \<s-slider\>
 
-Fork of `paper-slider`.
+Up-to-date fork of \<paper-slider\>.
 
 Material design: [Sliders](https://www.google.com/design/spec/components/sliders.html)
 
