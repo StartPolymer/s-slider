@@ -58,6 +58,7 @@ Custom property | Description | Default
 `--s-slider-pin-start-color` | The color of the pin at the far left | `--paper-grey-400`
 `--s-slider-height` | Height of the progress bar | `2px`
 `--s-slider-input` | Mixin applied to the input in editable mode | `{}`
+`--s-slider-expanded-knob` | Mixin applied to the expanded knob | `{}`
 
 @group Paper Elements
 @element s-slider
@@ -209,6 +210,7 @@ Custom property | Description | Default
       .expand:not(.pin) > .slider-knob > .slider-knob-inner {
         -webkit-transform: scale(1.5);
         transform: scale(1.5);
+        @apply(--s-slider-expanded-knob);
       }
 
       .ring > .slider-knob > .slider-knob-inner {

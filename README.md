@@ -12,6 +12,7 @@ brightness, or color saturation.
 ## New features
 
 - `deselected` property
+- `--s-slider-expanded-knob` mixin applied to the expanded knob
 
 <!---
 ```
