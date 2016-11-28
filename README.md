@@ -9,6 +9,10 @@ moving the slider thumb.  The interactive nature of the slider makes it a
 great choice for settings that reflect intensity levels, such as volume,
 brightness, or color saturation.
 
+## New features
+
+- `deselected` property
+
 <!---
 ```
 <custom-element-demo>
@@ -22,4 +26,5 @@ brightness, or color saturation.
 -->
 ```html
 <s-slider value="50"></s-slider>
+<s-slider value="21" deselected></s-slider>
 ```

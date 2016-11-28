@@ -297,16 +297,26 @@ Custom property | Description | Default
         border: 2px solid var(--s-slider-knob-start-border-color, --paper-grey-400);
       }
 
+      .deselected > .slider-knob > .slider-knob-inner {
+        background-color: var(--s-slider-disabled-knob-color, #fff);
+        border: 2px solid var(--s-slider-disabled-knob-color, --paper-grey-400);
+      }
+
+      .deselected.ring > .slider-knob > .slider-knob-inner {
+        background-color: var(--s-slider-knob-start-color, transparent);
+        border: 2px solid var(--s-slider-knob-start-border-color, --paper-grey-400);
+      }
+
       paper-ripple {
         color: var(--s-slider-knob-color, --google-blue-700);
       }
     </style>
 
     <div id="sliderContainer"
-      class$="[[_getClassNames(disabled, pin, snaps, immediateValue, min, expand, dragging, transiting, editable)]]">
+      class$="[[_getClassNames(disabled, pin, snaps, immediateValue, min, expand, dragging, transiting, editable, deselected)]]">
       <div class="bar-container">
         <paper-progress
-          disabled$="[[disabled]]"
+          disabled$="[[_computeProgressDisabled(disabled, deselected)]]"
           id="sliderBar"
           aria-hidden="true"
           min="[[min]]"
@@ -457,6 +467,14 @@ Custom property | Description | Default
               return [];
           }
         },
+
+        /**
+         * If true, the slider knob is deselected.
+         */
+        deselected: {
+          type: Boolean,
+          value: false
+        }
       },
 
       observers: [
@@ -490,6 +508,10 @@ Custom property | Description | Default
        */
       decrement: function() {
         this.value = this._clampValue(this.value - this.step);
+      },
+
+      _computeProgressDisabled: function(disabled, deselected) {
+        return disabled || deselected;
       },
 
       _updateKnob: function(value, min, max, snaps, step) {
@@ -669,7 +691,8 @@ Custom property | Description | Default
           expand: this.expand,
           dragging: this.dragging,
           transiting: this.transiting,
-          editable: this.editable
+          editable: this.editable,
+          deselected: this.deselected
         });
       },
 
