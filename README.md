@@ -2,7 +2,7 @@
 
 # \<s-slider\>
 
-Up-to-date fork of \<paper-slider\>.
+Up-to-date fork of [\<paper-slider\>](https://github.com/PolymerElements/paper-slider) with new features.
 
 Material design: [Sliders](https://www.google.com/design/spec/components/sliders.html)
 
