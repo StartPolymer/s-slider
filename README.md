@@ -13,7 +13,8 @@ brightness, or color saturation.
 
 ## New features
 
-- `deselected` property
+- `deselected` property for deselect the knob
+- `vertical` property for vertical orientation
 - `--s-slider-expanded-knob` mixin applied to the expanded knob
 
 <!---
@@ -29,7 +30,8 @@ brightness, or color saturation.
 -->
 ```html
 <s-slider value="50"></s-slider>
-<s-slider value="21" deselected></s-slider>
+<s-slider deselected value="50"></s-slider>
+<s-slider vertical value="50"></s-slider>
 ```
 
 [webcomponents-image]: https://img.shields.io/badge/webcomponents.org-published-blue.svg

@@ -92,6 +92,11 @@ Custom property | Description | Default
         outline: none;
       }
 
+      :host([vertical]) {
+        width: 100%;
+        height: 200px;
+      }
+
       #sliderContainer {
         position: relative;
         width: 100%;
@@ -107,6 +112,14 @@ Custom property | Description | Default
       #sliderContainer.editable {
         margin-top: 12px;
         margin-bottom: 12px;
+      }
+
+      #sliderContainer.vertical {
+        width: 20vh;
+        margin: 10vh -10vh;
+
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
       }
 
       .bar-container {
@@ -303,7 +316,6 @@ Custom property | Description | Default
         background-color: var(--s-slider-disabled-knob-color, #fff);
         border: 2px solid var(--s-slider-disabled-knob-color, --paper-grey-400);
       }
-
       .deselected.ring > .slider-knob > .slider-knob-inner {
         background-color: var(--s-slider-knob-start-color, transparent);
         border: 2px solid var(--s-slider-knob-start-border-color, --paper-grey-400);
@@ -315,7 +327,7 @@ Custom property | Description | Default
     </style>
 
     <div id="sliderContainer"
-      class$="[[_getClassNames(disabled, pin, snaps, immediateValue, min, expand, dragging, transiting, editable, deselected)]]">
+      class$="[[_getClassNames(disabled, pin, snaps, immediateValue, min, expand, dragging, transiting, editable, deselected, vertical)]]">
       <div class="bar-container">
         <paper-progress
           disabled$="[[_computeProgressDisabled(disabled, deselected)]]"
@@ -476,6 +488,14 @@ Custom property | Description | Default
         deselected: {
           type: Boolean,
           value: false
+        },
+
+        /**
+         * If true, the slider has vertical orientation.
+         */
+        vertical: {
+          type: Boolean,
+          value: false
         }
       },
 
@@ -595,7 +615,8 @@ Custom property | Description | Default
           this._trackStart(event);
         }
 
-        var dx = Math.min(this._maxx, Math.max(this._minx, event.detail.dx));
+        var axis = this.vertical ? event.detail.dy * -1 : event.detail.dx;
+        var dx = Math.min(this._maxx, Math.max(this._minx, axis));
         this._x = this._startx + dx;
 
         var immediateValue = this._calcStep(this._calcKnobPosition(this._x / this._w));
@@ -632,7 +653,13 @@ Custom property | Description | Default
       _bardown: function(event) {
         this._w = this.$.sliderBar.offsetWidth;
         var rect = this.$.sliderBar.getBoundingClientRect();
-        var ratio = (event.detail.x - rect.left) / this._w;
+
+        if (this.vertical) {
+          var ratio = (rect.bottom - event.detail.y) / this._w;
+        } else {
+          var ratio = (event.detail.x - rect.left) / this._w;
+        }
+
         var prevRatio = this.ratio;
 
         this._setTransiting(true);
@@ -694,7 +721,8 @@ Custom property | Description | Default
           dragging: this.dragging,
           transiting: this.transiting,
           editable: this.editable,
-          deselected: this.deselected
+          deselected: this.deselected,
+          vertical: this.vertical
         });
       },
 
