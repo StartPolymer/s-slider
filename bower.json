@@ -1,6 +1,6 @@
 {
   "name": "s-slider",
-  "version": "1.0.12",
+  "version": "1.0.12-1",
   "description": "A material design-style slider",
   "license": "http://polymer.github.io/LICENSE.txt",
   "authors": "The Polymer Authors",
@@ -13,7 +13,7 @@
   "main": "s-slider.html",
   "repository": {
     "type": "git",
-    "url": "git://github.com/PolymerElements/s-slider.git"
+    "url": "git://github.com/StartPolymer/s-slider.git"
   },
   "ignore": [],
   "dependencies": {
