@@ -1,3 +1,5 @@
+[![Published on webcomponents.org][webcomponents-image]][webcomponents-url]
+
 # \<s-slider\>
 
 Up-to-date fork of \<paper-slider\>.
@@ -29,3 +31,6 @@ brightness, or color saturation.
 <s-slider value="50"></s-slider>
 <s-slider value="21" deselected></s-slider>
 ```
+
+[webcomponents-image]: https://img.shields.io/badge/webcomponents.org-published-blue.svg
+[webcomponents-url]: https://beta.webcomponents.org/element/StartPolymer/s-slider
