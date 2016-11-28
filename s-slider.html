@@ -56,6 +56,8 @@ Custom property | Description | Default
 `--s-slider-knob-start-color` | The fill color of the knob at the far left | `transparent`
 `--s-slider-knob-start-border-color` | The border color of the knob at the far left | `--paper-grey-400`
 `--s-slider-pin-start-color` | The color of the pin at the far left | `--paper-grey-400`
+`--s-slider-deselected-knob-color` | The deselected knob color | `--paper-grey-400`
+`--s-slider-deselected-knob-inner-color` | The deselected knob inner color | `#fff`
 `--s-slider-height` | Height of the progress bar | `2px`
 `--s-slider-input` | Mixin applied to the input in editable mode | `{}`
 `--s-slider-expanded-knob` | Mixin applied to the expanded knob | `{}`
@@ -313,12 +315,13 @@ Custom property | Description | Default
       }
 
       .deselected > .slider-knob > .slider-knob-inner {
-        background-color: var(--s-slider-disabled-knob-color, #fff);
-        border: 2px solid var(--s-slider-disabled-knob-color, --paper-grey-400);
+        background-color: var(--s-slider-deselected-knob-inner-color, #fff);
+        border: 2px solid var(--s-slider-deselected-knob-color, --paper-grey-400);
       }
+
       .deselected.ring > .slider-knob > .slider-knob-inner {
-        background-color: var(--s-slider-knob-start-color, transparent);
-        border: 2px solid var(--s-slider-knob-start-border-color, --paper-grey-400);
+        background-color: var(--s-slider-deselected-knob-inner-color, #fff);
+        border: 2px solid var(--s-slider-deselected-knob-color, --paper-grey-400);
       }
 
       paper-ripple {

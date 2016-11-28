@@ -14,6 +14,8 @@ brightness, or color saturation.
 ## New features
 
 - `deselected` property for deselect the knob
+ - `--s-slider-deselected-knob-color` css property for deselected knob color
+ - `--s-slider-deselected-knob-inner-color` css property for deselected knob inner color
 - `vertical` property for vertical orientation
 - `--s-slider-expanded-knob` mixin applied to the expanded knob
 
